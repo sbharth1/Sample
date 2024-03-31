@@ -1,2 +1,2 @@
 # Sample
-This projects for beginners using javascript and jquery 
+This projects for beginners using HTML & Css & javascript and jquery 
