@@ -1,0 +1,235 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Lite Gallery</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"/>
+    <style>
+        *{
+            margin:0;
+            padding:0;
+            box-sizing: border-box;
+            text-align:center;
+        }
+        .container{
+            display:flex;
+            justify-content:space-around;
+            width:100%;
+            margin-top:50px;
+            z-index:15154;
+        }
+        .container img{
+            height:15vh;
+            width:100px;
+            border:10px solid #fff;
+            box-shadow:0px 5px 15px rgba(0,0,0,.9);
+            overflow:hidden;
+            object-fit:cover;   
+            transition: 0.5s;
+           z-index:6;
+
+
+        }
+        .container img:hover{
+            border:10px solid #fff;
+            box-shadow:0px 5px 15px rgba(4, 104, 255, 0.9);
+            overflow:hidden;
+            transform:scale(1.5);
+        }
+        h1{
+       margin-top:50px;
+       text-decoration: underline;
+        }
+        .showimg{
+                display:none;    
+            border:2px solid black; 
+            height:100%;
+            width:100%;
+            position:absolute;
+            top:0;
+            left:0;
+           z-index:5;
+           background :rgba(0,0,0,.9); 
+        }
+   #btn{
+    padding:5px 10px;
+    border-radius:50%;
+   position: absolute;
+    top:20px;
+    font-size:30px;
+    color:grey;
+    left:95%;
+   }
+   #left{
+    height:30px;
+    width:30px;
+    line-height:30px;
+   position: absolute;
+    top:calc(97% - 50px);
+    left:calc(55% - 143px);
+    font-size:15px;
+    color:white;
+    background:black;
+  }
+  #right{
+    height:30px;
+    width:30px;
+    line-height:30px;
+   position: absolute;
+    top:calc(97% - 50px);;
+    left:calc(55% - 77px);
+    font-size:15px;
+    color:white;
+    background:black;
+  }
+#home{
+    height:30px;
+    width:30px;
+    line-height:30px;
+    font-size:15px;
+    color:white;
+    background:black;
+   position: absolute;
+top:calc(97% - 50px);
+    left:calc(48% - 2px);
+}
+        #secimage{
+            margin-top:50px;
+            height:500px;
+            width:900px;
+        }
+        .secimage{
+            height:500px;
+            width:900px;
+            display:none;
+        }
+        .downimg{
+            margin-top:15px;
+            width:100%;
+            height:20vh;
+            display:none;
+        }
+        .downimage{
+            height:15vh;
+            width:100px;
+            filter:grayscale(70%);
+            margin-top:15px;
+            object-fit:cover;
+            margin-left:20px;
+        }
+      .downimage:hover{
+        border:5px solid #fff;
+        filter:grayscale(0);
+        border-radius:2px;
+      }
+      #downcut{
+        padding:5px 10px;
+    font-size:20px;
+    color:grey;
+    position:absolute;
+    top:73%;
+    left:92%;    
+    
+      }
+    </style>
+</head>
+<body>
+    <h1>light Gallery Demo</h1>
+
+    <div class="container" id="idcontain">
+
+    <img src="imgsmall/1.jpg" alt="" class="image"><img src="imgsmall/2.jpg" alt="" class="image"><img src="imgsmall/3.jpg" alt="" class="image"><img src="imgsmall/4.jpg" alt="" class="image"><img src="imgsmall/5.jpg" alt="" class="image"><img src="imgsmall/6.jpg" alt="" class="image"><img src="imgsmall/7.jpg" alt="" class="image"><img src="imgsmall/8.jpg" alt="" class="image"><img src="imgsmall/9.jpg" alt="" class="image"><img src="imgsmall/10.jpg" alt="" class="image">
+    </div>
+
+    <div class="showimg">
+        <div id="secimageid"> <img id="secimage" src="">  <img class="secimage" src="imgsmall/1.jpg">  <img class="secimage" src="imgsmall/2.jpg">  <img class="secimage" src="imgsmall/3.jpg">  <img class="secimage" src="imgsmall/4.jpg"> <img class="secimage" src="imgsmall/5.jpg"> <img class="secimage" src="imgsmall/6.jpg"> <img class="secimage" src="imgsmall/7.jpg"> <img class="secimage" src="imgsmall/8.jpg"> <img class="secimage" src="imgsmall/9.jpg">  <img class="secimage" src="imgsmall/10.jpg"></div>
+        <span id="btn"><i class="fa-regular fa-circle-xmark"></i></span>
+
+        <span id="left"><i class="fa-solid fa-arrow-left"></i></span>
+
+        <span id="home"><i class="fas fa-hotel"></i></span>
+
+        <span id="right"><i class="fa-solid fa-arrow-right"></i></span>
+
+        <div class="downimg">
+             <img src="imgsmall/1.jpg" alt="" class="downimage"><img src="imgsmall/2.jpg" alt="" class="downimage"><img src="imgsmall/3.jpg" alt="" class="downimage"><img src="imgsmall/4.jpg" alt="" class="downimage"><img src="imgsmall/5.jpg" alt="" class="downimage"><img src="imgsmall/6.jpg" alt="" class="downimage"><img src="imgsmall/7.jpg" alt="" class="downimage"><img src="imgsmall/8.jpg" alt="" class="downimage"><img src="imgsmall/9.jpg" alt="" class="downimage"><img src="imgsmall/10.jpg" alt="" class="downimage">
+            <span id="downcut"><i class="fa-regular fa-circle-xmark"></i></span>
+            </div>
+
+        </div>
+
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.1/jquery.min.js""></script>
+    <script>
+     
+     let x = $.noConflict(); 
+     x(".image").click(function(){
+        let store = x(this).attr("src");
+        x("#secimage").attr("src",store);
+        x(".showimg").css({"display":"block",
+        "z-index":"7"});
+        x("#btn").show()
+     });
+
+     x("#btn").click(()=>{
+        x(".showimg").hide()
+        x(this).hide()
+     })
+       x("#home").click(function(){
+        x(".downimg").show()
+        x(this).hide()
+        x("#left").hide()
+        x("#right").hide()
+        x("#downcut").show()
+       })
+        
+    x("#downcut").click(function(){
+        x("#home").show()
+        x(this).hide()
+        x("#left").show()
+        x("#right").show()
+        x(".downimg").hide()
+        x(".dowimage").hide()
+    });
+
+    x(".downimage").click(function(){
+        let store = x(this).attr("src");
+        x("#secimage").attr("src",store);
+        console.log(store)
+    })
+               
+
+    
+    x("#left").click(function () {
+        let cutImg = x("#secimage").attr("src");
+        let lastImg = x(".secimage:last").attr("src");
+        
+        if (cutImg === lastImg) {
+            x("#secimage").attr("src", x(".secimage").attr("src"));
+        } else {
+            let prevImg = x(".secimage[src='" + cutImg + "']").prev().attr("src");
+            x("#secimage").attr("src", prevImg);
+        }
+    });
+
+    x("#right").click(function () {
+        let cutImg = x("#secimage").attr("src");
+        let firstImg = x(".secimage:first").attr("src");
+        
+        if (cutImg === firstImg) {
+            x("#secimage").attr("src", x(".secimage").attr("src"));
+        } else {
+            let nextImg = x(".secimage[src='" + cutImg + "']").next().attr("src");
+            x("#secimage").attr("src", nextImg);
+        }
+    });
+
+
+//  All clear
+
+    
+     
+    </script>
+</body>
+</html>
